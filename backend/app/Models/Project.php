@@ -24,6 +24,10 @@ class Project extends Model
         return $this->belongsTo(User::class, 'client_id');
     }
 
+    public function users() {
+    return $this->belongsToMany(User::class);
+    }
+
     // Relasi: Tasks
     public function tasks()
     {

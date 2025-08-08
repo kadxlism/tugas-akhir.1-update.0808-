@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -14,9 +13,9 @@ return [
     */
 
     'defaults' => [
-    'guard' => 'sanctum',
-    'passwords' => 'users',
-],
+        'guard' => 'web',
+        'passwords' => 'users',
+    ],
 
 
     /*
@@ -37,16 +36,16 @@ return [
     */
 
     'guards' => [
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'users',
-    ],
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
 
-    'sanctum' => [ // optional jika kamu ingin definisi eksplisit
-        'driver' => 'sanctum',
-        'provider' => 'users',
+        'sanctum' => [ // optional jika kamu ingin definisi eksplisit
+            'driver' => 'sanctum',
+            'provider' => 'users',
+        ],
     ],
-],
 
 
     /*
@@ -67,14 +66,14 @@ return [
     */
 
     'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\User::class,
-    ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+            // 'users' => [
+            //     'driver' => 'database',
+            //     'table' => 'users',
+            // ],
     ],
 
     /*

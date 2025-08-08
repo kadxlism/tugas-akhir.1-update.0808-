@@ -2,6 +2,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from '@/services/axios';
 import { User } from '@/types/auth';
+import { useNavigate } from 'react-router-dom';
 
 export interface AuthContextProps {
   user: User | null;
@@ -38,16 +39,22 @@ const login = async (email: string, password: string) => {
   setUser(res.data);
 };
 
+const navigate = useNavigate();
 
-
-
-  const logout = () => {
-    axios.post('/api/logout').catch(() => {});
-    localStorage.removeItem('token');
+const logout = async () => {
+  try {
+    await axios.post("/auth/logout");
+    console.log("Logout sukses");
+  } catch (err) {
+    console.error("Logout gagal", err);
+  } finally {
+    localStorage.removeItem('auth_token');
     delete axios.defaults.headers.common['Authorization'];
-    setToken(null);
     setUser(null);
-  };
+    setLoading(false);
+    navigate("/login");
+  }
+};
 
   return (
     <AuthContext.Provider value={{ user,  login, logout, loading }}>

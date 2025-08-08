@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \App\Http\Middleware\VerifyCsrfToken::class,
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class, // ✨ Middleware penting untuk Sanctum
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -46,6 +47,7 @@ class Kernel extends HttpKernel
      * Route middleware.
      */
     protected $routeMiddleware = [
+        'admin' => \App\Http\Middleware\RequireAdmin::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

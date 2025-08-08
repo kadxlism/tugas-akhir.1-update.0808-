@@ -1,8 +1,11 @@
 {
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-  "dependencies": {
-    "@vitejs/plugin-react": "^4.6.0"
-  }
+    "dependencies": {
+      "@vitejs/plugin-react": "^4.6.0"
+    }
+  },
+  "devDependencies": {
+    "vite-plugin-css-injected-by-js": "^3.5.2"
   }
 }

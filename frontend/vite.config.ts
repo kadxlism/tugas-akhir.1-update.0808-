@@ -1,4 +1,3 @@
-// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -11,11 +10,11 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../backend/public/build', // ⬅️ Laravel akan membaca dari sini
+    outDir: '../backend/public/build',
     emptyOutDir: true,
     manifest: true,
     rollupOptions: {
-      input: path.resolve(__dirname, 'src/main.tsx'), // atau file utama React kamu
+      input: path.resolve(__dirname, 'src/main.tsx'),
     },
   },
 });

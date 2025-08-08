@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+import Register from '@/pages/Register';
 import Login from '@/pages/Login';
 import Dashboard from '@/pages/Dashboard';
 import UserList from '@/pages/users/UserList';
@@ -7,6 +8,14 @@ import Unauthorized from '@/pages/Unauthorized';
 import RequireAdmin from '@/components/requireAdmin';
 import AddUser from '@/pages/admin/AddUser';
 import EditUser from '@/pages/admin/EditUser';
+import AssignUser from '@/pages/projects/AssignUser';
+
+import ClientList from '@/pages/projects/ClientList';
+import ProjectForm from '@/pages/projects/ProjectForm';
+import ProjectList from '@/pages/projects/ProjectList';
+import TaskTable from '@/pages/projects/TaskTable';
+import TimelineView from '@/pages/projects/TimelineView';
+import RequireAuth from '@/components/requireAuth';
 
 const routes = [
   {
@@ -14,17 +23,25 @@ const routes = [
     element: <Navigate to="/dashboard" />,
   },
   {
-    path: '/login',
-    element: <Login />,
-  },
+  path: '/register',
+  element: <Register />,
+},
+{
+  path: '/login',
+  element: <Login />,
+},
   {
     path: '/dashboard',
     element: <Dashboard />,
   },
    {
-    path: '/admin/users',
-    element: <RequireAdmin><UserList /></RequireAdmin>,
-  },
+  path: '/admin/users',
+  element: (
+    <RequireAdmin>
+      <UserList />
+    </RequireAdmin>
+    ),
+    },
   {
     path: '/users',
     element: <RequireAdmin><UserList /></RequireAdmin>,
@@ -57,6 +74,55 @@ const routes = [
     </RequireAdmin>
   ),
 },
+{
+  path: '/projects/:projectId/assign',
+  element: (
+    <RequireAdmin>
+      <AssignUser />
+    </RequireAdmin>
+  ),
+},
+{
+    path: '/clients',
+    element: (
+      <RequireAdmin>
+        <ClientList />
+      </RequireAdmin>
+    ),
+  },
+  {
+    path: '/projects',
+    element: (
+      <RequireAdmin>
+        <ProjectList />
+      </RequireAdmin>
+    ),
+  },
+  {
+    path: '/projects/new',
+    element: (
+      <RequireAdmin>
+        <ProjectForm />
+      </RequireAdmin>
+    ),
+  },
+  {
+    path: '/tasks',
+    element: (
+      <RequireAdmin>
+        <TaskTable />
+      </RequireAdmin>
+    ),
+  },
+  {
+    path: '/timeline',
+    element: (
+      <RequireAdmin>
+        <TimelineView />
+      </RequireAdmin>
+    ),
+  },
+
 ];
 
 export default routes;
